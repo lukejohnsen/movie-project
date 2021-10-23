@@ -1,8 +1,5 @@
 var searchBtn = document.querySelector("#movie-searchBtn");
 
-var displayMovieInfo = function () {
-};
-
 var omdbApi = function (userMovie) {
     var omdbKey = "d9d0cc4d";
     var omdbUrl = "http://www.omdbapi.com/?t=" + userMovie + "&apikey=" + omdbKey;
@@ -12,22 +9,31 @@ var omdbApi = function (userMovie) {
             return response.json();
         })
         .then(function (data) {
-            console.log(data);
+            console.log("omdb", data);
 
-        var actorInfo = document.getElementById("actors");
-        actorInfo.append(data.Actors);
+            var releaseDate = document.getElementById("release-date");
+            releaseDate.innerHTML = "";
+            releaseDate.append("Release Date: " + data.Released);
 
-        // will take data from omdb fetch
-        tastediveApi(data);
+            var actorInfo = document.getElementById("actors");
+            actorInfo.innerHTML = "";
+            actorInfo.append("Actors:" + data.Actors);
+
+            var boxOffice = document.getElementById("box-office");
+            boxOffice.innerHTML = "";
+            boxOffice.append("Box Office:" + data.BoxOffice);
+
+            // tasteDiveApi will take data from omdb fetch
+            tasteDiveApi(data);
         });
 };
 
-var tastediveApi = function (movieData) {
+var tasteDiveApi = function (movieData) {
     var cors_preface = 'https://uofa21cors.herokuapp.com/';
-    var tastediveKey = "425881-GustavoH-440997PS"
-    var tastediveUrl = cors_preface + "https://tastedive.com/api/similar?q=" + movieData.Title + "&type=movie" + "&k=" +tastediveKey;
+    var tasteDiveKey = "425881-GustavoH-440997PS"
+    var tasteDiveUrl = cors_preface + "https://tastedive.com/api/similar?q=" + movieData.Title + "&type=movie" + "&k=" + tasteDiveKey;
 
-    fetch(tastediveUrl)
+    fetch(tasteDiveUrl)
         .then(function (response) {
             return response.json();
         })
@@ -47,5 +53,3 @@ searchBtn.addEventListener("click", function (event) {
 
     omdbApi(userMovie);
 });
-
-displayMovieInfo();
