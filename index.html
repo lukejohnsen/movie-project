@@ -25,7 +25,7 @@
             <div id="search">
                 <form>
                     <label for="movie-input" class="text-3xl">Search Movie:</label>
-                    <input type="text" id="user-input" placeholder="The Matrix Resurrections.."
+                    <input type="text" id="user-input" placeholder="Search a movie"
                         class="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full" />
                     <button type="submit" id="movie-searchBtn"class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
                         Search
@@ -37,13 +37,23 @@
         <section>
             <div id="movie">
                 <ul id="movie-details">
-                    <li id="release-date"></li>
+                    <li id="title"></li>
+                    <li id="director"></li>
                     <li id="actors"></li>
+                    <li id="writer"></li>
+                    <li id="plot"></li>
+                    <li id="release-date"></li>
+                    <li id="imdb-rating"></li>
+                    <li id="rt-rating"></li>
                     <li id="box-office"></li>
                     <li></li>
                 </ul>
+                <img id="poster"></img>
             </div>
         </section>
+
+        <section id="similar-titles"></section>
+
     </main>
 
     <footer>
