@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="./assets/css/style.css" />
 
     <title>Movie Project</title>
@@ -22,7 +22,7 @@
 
     <main>
         <section>
-            <div id="search">
+            <div id="search" class="box">
                 <form>
                     <label for="movie-input" class="text-3xl">Search Movie:</label>
                     <input type="text" id="user-input" placeholder="The Matrix Resurrections.."
@@ -35,12 +35,12 @@
         </section>
 
         <section>
-            <div id="movie">
+            <div id="movie" class="box">
                 <ul id="movie-details">
                     <li id="release-date"></li>
                     <li id="actors"></li>
                     <li id="box-office"></li>
-                    <li></li>
+                    <li id ="poster"></li>
                 </ul>
             </div>
         </section>

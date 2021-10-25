@@ -23,6 +23,10 @@ var omdbApi = function (userMovie) {
             boxOffice.innerHTML = "";
             boxOffice.append("Box Office:" + data.BoxOffice);
 
+            var posterDisplay = document.getElementById("poster");
+            posterDisplay.innerHTML = "";
+            posterDisplay.append(data.Poster);
+
             // tasteDiveApi will take data from omdb fetch
             tasteDiveApi(data);
         });
