@@ -14,8 +14,8 @@
 
 <body>
     <header>
-        <nav class="bg-blue-300 p-5">
-            <h1 class="has-text-centered is-uppercase has-text-weight-bold is-size-2">Movie Project</h1>
+        <nav class="p-5">
+            <h1 class="has-text-centered is-uppercase has-text-weight-bold is-size-1">Movie Project</h1>
             </div>
         </nav>
     </header>
@@ -23,42 +23,27 @@
     <main>
         <section class="hero">
             <div id="search" class="container hero-body">
+                <p class="has-text-centered has-text-white mb-6">Welcome to our page! Please type in a movie in the
+                    search
+                    bar below to see information regarding your searched movie, and to see other related movies!</p>
                 <form>
-                    <label for="movie-input" class="text-3xl">Search Movie:</label>
-                    <input type="text" id="user-input" placeholder="Search a movie"
-                        class="input" />
-                    <button type="submit" id="movie-searchBtn" class="button">
-                        Search
-                    </button>
+                    <h4 class="has-text-left is-size-4 mt-6 mb-3 has-text-white">Search Movie:</h4>
+                    <!-- <label for="movie-input" class="has-text-centered">Search Moiev:</label> -->
+                    <input type="text" id="user-input" placeholder="Search a movie" class="input is-focused is-danger" />
+                    <div class="has-text-centered">
+                        <button type="submit" id="movie-searchBtn"
+                            class="button is-danger is-hovered is-medium is-rounded my-3">
+                            Search
+                        </button>
+                    </div>
                 </form>
             </div>
         </section>
-        <!--
+
         <section>
-<<<<<<< HEAD
-            <div id="search" class="box">
-=======
-            <div id="search" class="container">
->>>>>>> feature/omdb
-                <form>
-                    <label for="movie-input" class="text-3xl">Search Movie:</label>
-                    <input type="text" id="user-input" placeholder="Search a movie"
-                        class="input" />
-                    <button type="submit" id="movie-searchBtn"class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-                        Search
-                    </button>
-                </form>
-            </div>
-        </section>
-    -->
-        <section>
-<<<<<<< HEAD
-            <div id="movie" class="box">
-=======
-            <div id="movie" class="container">
-                <h2 id="movie-info-header"></h2>
-                <img id="poster"></img>
->>>>>>> feature/omdb
+            <div id="movie" class="box mt-6">
+                <h2 class="has-text-left is-size-2">Movie Information</h2>
+                <img id="poster">
                 <ul id="movie-details">
                     <li id="title"></li>
                     <li id="director"></li>
@@ -69,17 +54,21 @@
                     <li id="imdb-rating"></li>
                     <li id="rt-rating"></li>
                     <li id="box-office"></li>
-                    <li id ="poster"></li>
                 </ul>
             </div>
         </section>
 
-        <section id="similar-titles" class="box"></section>
+        <section id="similar-titles" class="box mt-6">
+            <h2 class="has-text-left is-size-2">Related Movies</h2>
+        </section>
 
     </main>
 
-    <footer>
 
+    <footer class="footer has-background-black">
+        <div class="content has-text-centered has-text-white">
+            <p>Created by Gustavo Higuera & Luke Johnsen</p>
+        </div>
     </footer>
     <script src="./assets/js/script.js"></script>
 </body>
