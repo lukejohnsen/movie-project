@@ -46,9 +46,7 @@ var omdbApi = function (userMovie) {
             var moviePoster = document.getElementById("poster");
             moviePoster.setAttribute("src", data.Poster);
 
-            var posterDisplay = document.getElementById("poster");
-            posterDisplay.innerHTML = "";
-            posterDisplay.append(data.Poster);
+            
 
             // tasteDiveApi will take data from omdb fetch
             tasteDiveApi(data);
@@ -67,15 +65,17 @@ var tasteDiveApi = function (movieData) {
         .then(function (data) {
             console.log("tastedive", data);
 
-        for (let i = 0; i < data.Similar.Results.length; i++) {
-            var similarMovie = document.createElement("div");
-            similarMovie.textContent = "Title: " + data.Similar.Results[i].Name;
-
-            var movieList = document.getElementById("similar-titles");
-            movieList.appendChild(similarMovie);
-        }
+            for (let i = 0; i < data.Similar.Results.length; i++) {
+                var similarMovie = document.createElement("div");
+                similarMovie.textContent = "Title: " + data.Similar.Results[i].Name;
+    
+                var movieList = document.getElementById("similar-titles");
+                movieList.appendChild(similarMovie);
+            }    
 
         });
+
+
 };
 
 searchBtn.addEventListener("click", function (event) {
