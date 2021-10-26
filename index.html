@@ -12,38 +12,70 @@
 
 </head>
 
-<body class="bg-gray-300">
+<body>
     <header>
         <nav class="bg-blue-300 p-5">
-            <h1 class="text-center text-5xl text-white">Movie Project</h1>
+            <h1 class="has-text-centered is-uppercase has-text-weight-bold is-size-2">Movie Project</h1>
             </div>
         </nav>
     </header>
 
     <main>
-        <section>
-            <div id="search" class="box">
+        <section class="hero">
+            <div id="search" class="container hero-body">
                 <form>
                     <label for="movie-input" class="text-3xl">Search Movie:</label>
-                    <input type="text" id="user-input" placeholder="The Matrix Resurrections.."
-                        class="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full" />
+                    <input type="text" id="user-input" placeholder="Search a movie"
+                        class="input" />
+                    <button type="submit" id="movie-searchBtn" class="button">
+                        Search
+                    </button>
+                </form>
+            </div>
+        </section>
+        <!--
+        <section>
+<<<<<<< HEAD
+            <div id="search" class="box">
+=======
+            <div id="search" class="container">
+>>>>>>> feature/omdb
+                <form>
+                    <label for="movie-input" class="text-3xl">Search Movie:</label>
+                    <input type="text" id="user-input" placeholder="Search a movie"
+                        class="input" />
                     <button type="submit" id="movie-searchBtn"class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
                         Search
                     </button>
                 </form>
             </div>
         </section>
-
+    -->
         <section>
+<<<<<<< HEAD
             <div id="movie" class="box">
+=======
+            <div id="movie" class="container">
+                <h2 id="movie-info-header"></h2>
+                <img id="poster"></img>
+>>>>>>> feature/omdb
                 <ul id="movie-details">
-                    <li id="release-date"></li>
+                    <li id="title"></li>
+                    <li id="director"></li>
                     <li id="actors"></li>
+                    <li id="writer"></li>
+                    <li id="plot"></li>
+                    <li id="release-date"></li>
+                    <li id="imdb-rating"></li>
+                    <li id="rt-rating"></li>
                     <li id="box-office"></li>
                     <li id ="poster"></li>
                 </ul>
             </div>
         </section>
+
+        <section id="similar-titles" class="box"></section>
+
     </main>
 
     <footer>
