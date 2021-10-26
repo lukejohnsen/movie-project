@@ -5,37 +5,52 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="./assets/css/style.css" />
 
     <title>Movie Project</title>
 
 </head>
 
-<body class="bg-gray-300">
+<body>
     <header>
         <nav class="bg-blue-300 p-5">
-            <h1 class="text-center text-5xl text-white">Movie Project</h1>
+            <h1 class="has-text-centered is-uppercase has-text-weight-bold is-size-2">Movie Project</h1>
             </div>
         </nav>
     </header>
 
     <main>
-        <section>
-            <div id="search">
+        <section class="hero">
+            <div id="search" class="container hero-body">
                 <form>
                     <label for="movie-input" class="text-3xl">Search Movie:</label>
                     <input type="text" id="user-input" placeholder="Search a movie"
-                        class="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full" />
+                        class="input" />
+                    <button type="submit" id="movie-searchBtn" class="button">
+                        Search
+                    </button>
+                </form>
+            </div>
+        </section>
+        <!--
+        <section>
+            <div id="search" class="container">
+                <form>
+                    <label for="movie-input" class="text-3xl">Search Movie:</label>
+                    <input type="text" id="user-input" placeholder="Search a movie"
+                        class="input" />
                     <button type="submit" id="movie-searchBtn"class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
                         Search
                     </button>
                 </form>
             </div>
         </section>
-
+    -->
         <section>
-            <div id="movie">
+            <div id="movie" class="container">
+                <h2 id="movie-info-header"></h2>
+                <img id="poster"></img>
                 <ul id="movie-details">
                     <li id="title"></li>
                     <li id="director"></li>
@@ -48,11 +63,10 @@
                     <li id="box-office"></li>
                     <li></li>
                 </ul>
-                <img id="poster"></img>
             </div>
         </section>
 
-        <section id="similar-titles"></section>
+        <section id="similar-titles" class="box"></section>
 
     </main>
 
