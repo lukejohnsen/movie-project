@@ -46,8 +46,6 @@ var omdbApi = function (userMovie) {
             var moviePoster = document.getElementById("poster");
             moviePoster.setAttribute("src", data.Poster);
 
-            
-
             // tasteDiveApi will take data from omdb fetch
             tasteDiveApi(data);
         });
@@ -56,7 +54,7 @@ var omdbApi = function (userMovie) {
 var tasteDiveApi = function (movieData) {
     var cors_preface = 'https://uofa21cors.herokuapp.com/';
     var tasteDiveKey = "425881-GustavoH-440997PS"
-    var tasteDiveUrl = cors_preface + "https://tastedive.com/api/similar?q=" + movieData.Title + "&type=movie" + "&k=" + tasteDiveKey;
+    var tasteDiveUrl = cors_preface + "https://tastedive.com/api/similar?q=" + movieData.Title + "&type=movie" + "&limit=15" + "&k=" + tasteDiveKey;
 
     fetch(tasteDiveUrl)
         .then(function (response) {
@@ -66,15 +64,30 @@ var tasteDiveApi = function (movieData) {
             console.log("tastedive", data);
 
             for (let i = 0; i < data.Similar.Results.length; i++) {
-                var similarMovie = document.createElement("div");
+                var similarMovie = document.createElement("li");
                 similarMovie.textContent = "Title: " + data.Similar.Results[i].Name;
-    
+
                 var movieList = document.getElementById("similar-titles");
                 movieList.appendChild(similarMovie);
-            }    
 
+                var omdbKey = "d9d0cc4d";
+                var similarMovieData = "http://www.omdbapi.com/?t=" + data.Similar.Results[i].Name + "&apikey=" + omdbKey;
+
+                fetch(similarMovieData)
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .then(function (data) {
+                        console.log(data)
+
+                        for (let i = 0; i < 16; i++) {
+                            var similarMovie
+                        }
+                    })
+
+
+            }
         });
-
 
 };
 

@@ -8,14 +8,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="./assets/css/style.css" />
 
-    <title>Movie Project</title>
+    <title>The Big Picture</title>
 
 </head>
 
 <body>
     <header>
         <nav class="p-5">
-            <h1 class="has-text-centered is-uppercase has-text-weight-bold is-size-1">Movie Project</h1>
+            <h1 class="has-text-centered is-uppercase has-text-weight-bold is-size-1">The Big Picture</h1>
             </div>
         </nav>
     </header>
@@ -29,7 +29,8 @@
                 <form>
                     <h4 class="has-text-left is-size-4 mt-6 mb-3 has-text-white">Search Movie:</h4>
                     <!-- <label for="movie-input" class="has-text-centered">Search Moiev:</label> -->
-                    <input type="text" id="user-input" placeholder="Search a movie" class="input is-focused is-danger" />
+                    <input type="text" id="user-input" placeholder="Search a movie"
+                        class="input is-focused is-danger" />
                     <div class="has-text-centered">
                         <button type="submit" id="movie-searchBtn"
                             class="button is-danger is-hovered is-medium is-rounded my-3">
@@ -41,9 +42,8 @@
         </section>
 
         <section>
-            <div id="movie" class="box mt-6">
-                <h2 class="has-text-left is-size-2">Movie Information</h2>
-                <img id="poster">
+            <div id="movie" class="box mt-6 has-text-white">
+                <h2 class="has-text-left is-size-2">Your Movie</h2>
                 <ul id="movie-details">
                     <li id="title"></li>
                     <li id="director"></li>
@@ -54,12 +54,14 @@
                     <li id="imdb-rating"></li>
                     <li id="rt-rating"></li>
                     <li id="box-office"></li>
+                    <img id="poster">
                 </ul>
             </div>
         </section>
 
-        <section id="similar-titles" class="box mt-6">
-            <h2 class="has-text-left is-size-2">Related Movies</h2>
+        <section class="box mt-6 has-text-white">
+            <h2 class="has-text-left is-size-2" id="similar-titles">Movies You'd Like</h2>
+            <ul id="similar-movie-details"></ul>
         </section>
 
     </main>
