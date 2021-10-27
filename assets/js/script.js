@@ -89,7 +89,7 @@ var tasteDiveApi = function (movieData) {
 
 
                         var similarMovieTitle = document.createElement("p");
-                        similarMovieTitle.setAttribute("class", "is-size-4")
+                        similarMovieTitle.setAttribute("class", "is-size-5"); 
                         similarMovieTitle.textContent = data.Title;
                         similarMovieContainer.append(similarMovieTitle);
 
@@ -102,7 +102,8 @@ var tasteDiveApi = function (movieData) {
                         similarMovieContainer.append(similarMoviePoster);
 
                         var similarIMDBRating = document.createElement("p");
-                        similarIMDBRating.textContent = data.Rating
+                        similarIMDBRating.textContent = data.Rating;
+                        similarMovieContainer.append(similarIMDBRating);
 
                         similarMovieDetails.append(similarMovieContainer);
                     })
