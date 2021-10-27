@@ -17,7 +17,7 @@ var omdbApi = function (userMovie) {
 
             var movieTitle = document.getElementById("title");
             movieTitle.innerHTML = "";
-            movieTitle.append("Title: " + data.Title);
+            movieTitle.innerHTML = "<span class='has-text-weight-bold'>Title: </span>" + data.Title;
 
             var directorInfo = document.getElementById("director");
             directorInfo.innerHTML = "";
@@ -68,11 +68,6 @@ var tasteDiveApi = function (movieData) {
             console.log("tastedive", data);
 
             for (let i = 0; i < data.Similar.Results.length; i++) {
-                // var similarMovie = document.createElement("li");
-                // similarMovie.textContent = "Title: " + data.Similar.Results[i].Name;
-
-                // var movieList = document.getElementById("similar-movie-details");
-                // movieList.appendChild(similarMovie);
 
                 var omdbKey = "d9d0cc4d";
                 var similarMovieData = "http://www.omdbapi.com/?t=" + data.Similar.Results[i].Name + "&apikey=" + omdbKey;
@@ -84,19 +79,27 @@ var tasteDiveApi = function (movieData) {
                     .then(function (data) {
                         console.log(data)
 
-                        var similarMovieTitle = document.createElement("li");
-                        // similarMovieTitle.setAttribute("class", "is-size-4")
-                            similarMovieTitle.textContent = data.Title;
-                            var similarMovieDetails = document.getElementById("similar-movie-details");
-                            similarMovieDetails.append(similarMovieTitle);
+                        var similarMovieDetails = document.getElementById("similar-movie-details");
 
-                        var similarMoviePlot = document.createElement("li");
+                        var similarMovieContainer = document.createElement("div")
+
+
+                        var similarMovieTitle = document.createElement("p");
+                        similarMovieTitle.setAttribute("class", "is-size-4")
+                        similarMovieTitle.textContent = data.Title;
+                        similarMovieContainer.append(similarMovieTitle);
+
+                        var similarMoviePlot = document.createElement("p");
                         similarMoviePlot.textContent = data.Plot;
-                        similarMovieTitle.append(similarMoviePlot);
+                        similarMovieContainer.append(similarMoviePlot);
 
                         var similarMoviePoster = document.createElement("img");
-                        similarMoviePoster.setAttribute ("src", data.Poster);
-                        similarMoviePlot.append(similarMoviePoster);
+                        similarMoviePoster.setAttribute("src", data.Poster);
+                        similarMovieContainer.append(similarMoviePoster);
+
+                        var simil
+
+                        similarMovieDetails.append(similarMovieContainer);
                     })
             }
         });
