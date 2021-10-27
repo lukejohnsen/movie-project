@@ -21,31 +21,35 @@ var omdbApi = function (userMovie) {
 
             var directorInfo = document.getElementById("director");
             directorInfo.innerHTML = "";
-            directorInfo.append("Director(s): " + data.Director);
+            directorInfo.innerHTML = "<span class='has-text-weight-bold'>Director(s): </span>" + data.Director;
 
             var releaseDate = document.getElementById("release-date");
             releaseDate.innerHTML = "";
-            releaseDate.append("Release Date: " + data.Released);
+            releaseDate.innerHTML = "<span class='has-text-weight-bold'>Release Date: </span>" + data.Released;
 
             var actorInfo = document.getElementById("actors");
             actorInfo.innerHTML = "";
-            actorInfo.append("Actors: " + data.Actors);
+            actorInfo.innerHTML = "<span class='has-text-weight-bold'>Starring: </span>" + data.Actors;
 
             writerInfo = document.getElementById("writer");
             writerInfo.innerHTML = "";
-            writerInfo.append("Writer(s): " + data.Writer);
+            writerInfo.innerHTML = "<span class='has-text-weight-bold'>Writers(s) </span>" + data.Writer;
 
             var plotInfo = document.getElementById("plot");
             plotInfo.innerHTML = "";
-            plotInfo.append("Plot: " + data.Plot);
+            plotInfo.innerHTML = "<span class='has-text-weight-bold'>Plot: </span>" + data.Plot;
 
             var boxOffice = document.getElementById("box-office");
             boxOffice.innerHTML = "";
-            boxOffice.append("Box Office: " + data.BoxOffice);
+            boxOffice.innerHTML = "<span class='has-text-weight-bold'>Box Office: </span>" + data.BoxOffice;
 
             var imdbRating = document.getElementById("imdb-rating");
             imdbRating.innerHTML = "";
-            imdbRating.append("IMDB Rating: " + data.Ratings[0].Value);
+            imdbRating.innerHTML = "<span class='has-text-weight-bold'>IMDB Rating: </span>" + data.Ratings[0].Value;
+
+            var rtRating = document.getElementById("rt-rating");
+            rtRating.innerHTML = "";
+            rtRating.innerHTML = "<span class='has-text-weight-bold'>Rotten Tomatoes Rating: </span>" + data.Ratings[1].Value;
 
             var moviePoster = document.getElementById("poster");
             moviePoster.setAttribute("src", data.Poster);
@@ -100,6 +104,13 @@ var tasteDiveApi = function (movieData) {
                         similarMoviePoster.setAttribute("src", data.Poster);
                         similarMovieContainer.append(similarMoviePoster);
 
+<<<<<<< HEAD
+=======
+                        var similarIMDBRating = document.createElement("p");
+                        similarIMDBRating.textContent = data.Rating;
+                        similarMovieContainer.append(similarIMDBRating);
+
+>>>>>>> ad79b6c1465c6084bf031201cfb1021ea6d6db83
                         similarMovieDetails.append(similarMovieContainer);
                     })
             }
