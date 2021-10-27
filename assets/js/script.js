@@ -83,6 +83,7 @@ var tasteDiveApi = function (movieData) {
 
                         var similarMovieContainer = document.createElement("div")
 
+<<<<<<< HEAD
 
                         var similarMovieTitle = document.createElement("p");
                         similarMovieTitle.setAttribute("class", "is-size-5"); 
@@ -93,10 +94,27 @@ var tasteDiveApi = function (movieData) {
                         similarMoviePlot.textContent = data.Plot;
                         similarMovieContainer.append(similarMoviePlot);
 
+=======
+
+                        var similarMovieTitle = document.createElement("p");
+                        similarMovieTitle.setAttribute("class", "is-size-4")
+                        similarMovieTitle.textContent = data.Title;
+                        similarMovieContainer.append(similarMovieTitle);
+
+                        var similarMoviePlot = document.createElement("p");
+                        similarMoviePlot.textContent = data.Plot;
+                        similarMovieContainer.append(similarMoviePlot);
+
+>>>>>>> a39e422c17723dc8169704f505e1410ab179da14
                         var similarMoviePoster = document.createElement("img");
                         similarMoviePoster.setAttribute("src", data.Poster);
                         similarMovieContainer.append(similarMoviePoster);
 
+<<<<<<< HEAD
+=======
+                        var simil
+
+>>>>>>> a39e422c17723dc8169704f505e1410ab179da14
                         similarMovieDetails.append(similarMovieContainer);
                     })
             }
