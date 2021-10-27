@@ -37,3 +37,7 @@ header h1 {
     background-attachment: fixed;
     background-position: 50%;
 }
+
+#warning {
+    color: yellow;
+}

@@ -1,3 +1,7 @@
+/*
+Create local storage for user to save movie in list... 
+*/
+
 var searchBtn = document.querySelector("#movie-searchBtn");
 
 var omdbApi = function (userMovie) {
@@ -95,7 +99,16 @@ searchBtn.addEventListener("click", function (event) {
     event.preventDefault();
     var userMovie = document.getElementById("user-input").value;
 
-    console.log(userMovie);
+    if (userMovie === "") {
+        document.getElementById("warning").textContent = "Please enter a movie!";
+    } else {
 
-    omdbApi(userMovie);
+        document.getElementById("warning").textContent = "";
+
+        console.log(userMovie);
+
+        omdbApi(userMovie);
+    }
+
+
 });
