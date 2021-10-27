@@ -54,7 +54,7 @@ var omdbApi = function (userMovie) {
 var tasteDiveApi = function (movieData) {
     var cors_preface = 'https://uofa21cors.herokuapp.com/';
     var tasteDiveKey = "425881-GustavoH-440997PS"
-    var tasteDiveUrl = cors_preface + "https://tastedive.com/api/similar?q=" + movieData.Title + "&type=movie" + "&limit=15" + "&k=" + tasteDiveKey;
+    var tasteDiveUrl = cors_preface + "https://tastedive.com/api/similar?q=" + movieData.Title + "&type=movie" + "&limit=10" + "&k=" + tasteDiveKey;
 
     fetch(tasteDiveUrl)
         .then(function (response) {
@@ -64,11 +64,11 @@ var tasteDiveApi = function (movieData) {
             console.log("tastedive", data);
 
             for (let i = 0; i < data.Similar.Results.length; i++) {
-                var similarMovie = document.createElement("li");
-                similarMovie.textContent = "Title: " + data.Similar.Results[i].Name;
+                // var similarMovie = document.createElement("li");
+                // similarMovie.textContent = "Title: " + data.Similar.Results[i].Name;
 
-                var movieList = document.getElementById("similar-titles");
-                movieList.appendChild(similarMovie);
+                // var movieList = document.getElementById("similar-movie-details");
+                // movieList.appendChild(similarMovie);
 
                 var omdbKey = "d9d0cc4d";
                 var similarMovieData = "http://www.omdbapi.com/?t=" + data.Similar.Results[i].Name + "&apikey=" + omdbKey;
@@ -80,15 +80,22 @@ var tasteDiveApi = function (movieData) {
                     .then(function (data) {
                         console.log(data)
 
-                        for (let i = 0; i < 16; i++) {
-                            var similarMovie
-                        }
+                        var similarMovieTitle = document.createElement("li");
+                        // similarMovieTitle.setAttribute("class", "is-size-4")
+                            similarMovieTitle.textContent = data.Title;
+                            var similarMovieDetails = document.getElementById("similar-movie-details");
+                            similarMovieDetails.append(similarMovieTitle);
+
+                        var similarMoviePlot = document.createElement("li");
+                        similarMoviePlot.textContent = data.Plot;
+                        similarMovieTitle.append(similarMoviePlot);
+
+                        var similarMoviePoster = document.createElement("img");
+                        similarMoviePoster.setAttribute ("src", data.Poster);
+                        similarMoviePlot.append(similarMoviePoster);
                     })
-
-
             }
         });
-
 };
 
 searchBtn.addEventListener("click", function (event) {
