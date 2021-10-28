@@ -1,10 +1,7 @@
-/*
-Create local storage for user to save movie in list... 
-*/
-
 var searchBtn = document.querySelector("#movie-searchBtn");
 var previousSearchEl = document.getElementById("previous-search")
 var userMovies = getMovieFromStorage();
+var similarMovieDetails = document.getElementById("similar-movie-details");
 
 var omdbApi = function (userMovie) {
     var omdbKey = "d9d0cc4d";
@@ -73,6 +70,8 @@ var tasteDiveApi = function (movieData) {
         .then(function (data) {
             console.log("tastedive", data);
 
+            similarMovieDetails.innerHTML = "";
+
             for (let i = 0; i < data.Similar.Results.length; i++) {
 
                 var omdbKey = "d9d0cc4d";
@@ -85,8 +84,6 @@ var tasteDiveApi = function (movieData) {
                     .then(function (data) {
                         console.log(data)
 
-                        var similarMovieDetails = document.getElementById("similar-movie-details");
-
                         var similarMovieContainer = document.createElement("div")
                         similarMovieContainer.setAttribute("class", "card");
 
@@ -98,9 +95,9 @@ var tasteDiveApi = function (movieData) {
                         similarMovieContainer.append(similarMovieTitle);
 
                         var similarMoviePlot = document.createElement("p");
+
                         similarMoviePlot.innerHTML = "<span class='has-text-weight-bold'>Plot: </span>" + data.Plot;
                         similarMoviePlot.setAttribute("class", "card-content has-text-centered has-text-white");
-                        similarMoviePlot.textContent = data.Plot;
                         similarMovieContainer.append(similarMoviePlot);
 
                         var similarIMDBRating = document.createElement("p");
@@ -147,9 +144,8 @@ function generatePriorMovie() {
             var movie = event.target.getAttribute("data-movie");
             omdbApi(movie);
 
-            // why wont calling tasteDiveApi here work??? 
-
         });
+
         previousSearchEl.appendChild(movieButton);
     }
 };
