@@ -89,21 +89,25 @@ var tasteDiveApi = function (movieData) {
 
 
                         var similarMovieTitle = document.createElement("p");
-                        similarMovieTitle.setAttribute("class", "is-size-5"); 
+                        similarMovieTitle.setAttribute("class", "is-size-5 has-text-weight-bold"); 
                         similarMovieTitle.textContent = data.Title;
                         similarMovieContainer.append(similarMovieTitle);
 
                         var similarMoviePlot = document.createElement("p");
-                        similarMoviePlot.textContent = data.Plot;
+                        similarMoviePlot.innerHTML = "<span class='has-text-weight-bold'>Plot: </span>" + data.Plot;
                         similarMovieContainer.append(similarMoviePlot);
+
+                        var similarIMDBRating = document.createElement("p");
+                        similarIMDBRating.innerHTML = "<span class='has-text-weight-bold'>IMDB: </span>" + data.Ratings[0].Value;
+                        similarMovieContainer.append(similarIMDBRating);
+
+                        var similarRTRating = document.createElement("p");
+                        similarRTRating.innerHTML = "<span class='has-text-weight-bold'>Rotten Tomatoes: </span>" + data.Ratings[1].Value;
+                        similarMovieContainer.append(similarRTRating);
 
                         var similarMoviePoster = document.createElement("img");
                         similarMoviePoster.setAttribute("src", data.Poster);
                         similarMovieContainer.append(similarMoviePoster);
-
-                        var similarIMDBRating = document.createElement("p");
-                        similarIMDBRating.textContent = data.Rating;
-                        similarMovieContainer.append(similarIMDBRating);
 
                         similarMovieDetails.append(similarMovieContainer);
                     })
@@ -125,6 +129,4 @@ searchBtn.addEventListener("click", function (event) {
 
         omdbApi(userMovie);
     }
-
-
 });
