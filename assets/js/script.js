@@ -1,8 +1,5 @@
-/*
-Create local storage for user to save movie in list... 
-*/
-
 var searchBtn = document.querySelector("#movie-searchBtn");
+var userMovies = getMovieFromStorage();
 
 var omdbApi = function (userMovie) {
     var omdbKey = "d9d0cc4d";
@@ -90,39 +87,55 @@ var tasteDiveApi = function (movieData) {
 
 
                         var similarMovieTitle = document.createElement("p");
-                        similarMovieTitle.setAttribute("class", "card-header-title is-size-5 is-centered has-text-white"); 
+                        similarMovieTitle.setAttribute("class", "card-header-title is-size-5 is-centered has-text-white");
                         similarMovieTitle.textContent = data.Title;
                         similarMovieContainer.append(similarMovieTitle);
 
                         var similarMoviePlot = document.createElement("p");
-                        similarMoviePlot.setAttribute("class", "card-content has-text-centered has-text-white"); 
+                        similarMoviePlot.setAttribute("class", "card-content has-text-centered has-text-white");
                         similarMoviePlot.textContent = data.Plot;
                         similarMovieContainer.append(similarMoviePlot);
 
                         var similarMoviePoster = document.createElement("img");
-                        similarMoviePoster.setAttribute("class", "card-image"); 
+                        similarMoviePoster.setAttribute("class", "card-image");
                         similarMoviePoster.setAttribute("src", data.Poster);
                         similarMovieContainer.append(similarMoviePoster);
 
-<<<<<<< HEAD
-=======
-                        var similarIMDBRating = document.createElement("p");
-                        similarIMDBRating.textContent = data.Rating;
-                        similarMovieContainer.append(similarIMDBRating);
-
->>>>>>> ad79b6c1465c6084bf031201cfb1021ea6d6db83
                         similarMovieDetails.append(similarMovieContainer);
                     })
             }
         });
 };
 
+function getMovieFromStorage() {
+    return JSON.parse(localStorage.getItem("movies")) || [];
+};
+
+function addMovieToStorage() {
+    localStorage.setItem("movies", JSON.stringify(userMovies));
+};
+
 searchBtn.addEventListener("click", function (event) {
+
     event.preventDefault();
+
     var userMovie = document.getElementById("user-input").value;
 
-    var userStorage = userMovie;
-    localStorage.setItem("user-movie", JSON.stringify(userStorage));
+    var previousMovieSearch = document.getElementById("previous-search");
+    previousMovieSearch.setAttribute("button", "submit");
+    previousMovieSearch.append(userMovie);
+
+    // using local storage to save user entered movies
+
+    /*
+    var searchedMovie = userMovie;
+    localStorage.setItem("Movie: ", JSON.stringify(searchedMovie));
+    */
+    userMovies.push(userMovie);
+    addMovieToStorage();
+
+
+
 
     if (userMovie === "") {
         document.getElementById("warning").textContent = "Please enter a movie!";
