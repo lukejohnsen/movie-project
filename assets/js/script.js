@@ -86,26 +86,33 @@ var tasteDiveApi = function (movieData) {
                         var similarMovieDetails = document.getElementById("similar-movie-details");
 
                         var similarMovieContainer = document.createElement("div")
+                        similarMovieContainer.setAttribute("class", "card");
 
 
                         var similarMovieTitle = document.createElement("p");
                         similarMovieTitle.setAttribute("class", "is-size-5 has-text-weight-bold"); 
+                        similarMovieTitle.setAttribute("class", "card-header-title is-size-5 is-centered has-text-white"); 
                         similarMovieTitle.textContent = data.Title;
                         similarMovieContainer.append(similarMovieTitle);
 
                         var similarMoviePlot = document.createElement("p");
                         similarMoviePlot.innerHTML = "<span class='has-text-weight-bold'>Plot: </span>" + data.Plot;
+                        similarMoviePlot.setAttribute("class", "card-content has-text-centered has-text-white"); 
+                        similarMoviePlot.textContent = data.Plot;
                         similarMovieContainer.append(similarMoviePlot);
 
                         var similarIMDBRating = document.createElement("p");
                         similarIMDBRating.innerHTML = "<span class='has-text-weight-bold'>IMDB: </span>" + data.Ratings[0].Value;
+                        similarIMDBRating.setAttribute("class", "card-content has-text-centered has-text-white"); 
                         similarMovieContainer.append(similarIMDBRating);
 
                         var similarRTRating = document.createElement("p");
                         similarRTRating.innerHTML = "<span class='has-text-weight-bold'>Rotten Tomatoes: </span>" + data.Ratings[1].Value;
+                        similarRTRating.setAttribute("class", "card-content has-text-centered has-text-white"); 
                         similarMovieContainer.append(similarRTRating);
 
                         var similarMoviePoster = document.createElement("img");
+                        similarMoviePoster.setAttribute("class", "card-image"); 
                         similarMoviePoster.setAttribute("src", data.Poster);
                         similarMovieContainer.append(similarMoviePoster);
 
@@ -118,6 +125,9 @@ var tasteDiveApi = function (movieData) {
 searchBtn.addEventListener("click", function (event) {
     event.preventDefault();
     var userMovie = document.getElementById("user-input").value;
+
+    var userStorage = userMovie;
+    localStorage.setItem("user-movie", JSON.stringify(userStorage));
 
     if (userMovie === "") {
         document.getElementById("warning").textContent = "Please enter a movie!";
