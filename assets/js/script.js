@@ -3,6 +3,8 @@ Create local storage for user to save movie in list...
 */
 
 var searchBtn = document.querySelector("#movie-searchBtn");
+var previousSearchEl = document.getElementById("previous-search")
+var userMovies = getMovieFromStorage();
 
 var omdbApi = function (userMovie) {
     var omdbKey = "d9d0cc4d";
@@ -90,29 +92,29 @@ var tasteDiveApi = function (movieData) {
 
 
                         var similarMovieTitle = document.createElement("p");
-                        similarMovieTitle.setAttribute("class", "is-size-5 has-text-weight-bold"); 
-                        similarMovieTitle.setAttribute("class", "card-header-title is-size-5 is-centered has-text-white"); 
+                        similarMovieTitle.setAttribute("class", "is-size-5 has-text-weight-bold");
+                        similarMovieTitle.setAttribute("class", "card-header-title is-size-5 is-centered has-text-white");
                         similarMovieTitle.textContent = data.Title;
                         similarMovieContainer.append(similarMovieTitle);
 
                         var similarMoviePlot = document.createElement("p");
                         similarMoviePlot.innerHTML = "<span class='has-text-weight-bold'>Plot: </span>" + data.Plot;
-                        similarMoviePlot.setAttribute("class", "card-content has-text-centered has-text-white"); 
+                        similarMoviePlot.setAttribute("class", "card-content has-text-centered has-text-white");
                         similarMoviePlot.textContent = data.Plot;
                         similarMovieContainer.append(similarMoviePlot);
 
                         var similarIMDBRating = document.createElement("p");
                         similarIMDBRating.innerHTML = "<span class='has-text-weight-bold'>IMDB: </span>" + data.Ratings[0].Value;
-                        similarIMDBRating.setAttribute("class", "card-content has-text-centered has-text-white"); 
+                        similarIMDBRating.setAttribute("class", "card-content has-text-centered has-text-white");
                         similarMovieContainer.append(similarIMDBRating);
 
                         var similarRTRating = document.createElement("p");
                         similarRTRating.innerHTML = "<span class='has-text-weight-bold'>Rotten Tomatoes: </span>" + data.Ratings[1].Value;
-                        similarRTRating.setAttribute("class", "card-content has-text-centered has-text-white"); 
+                        similarRTRating.setAttribute("class", "card-content has-text-centered has-text-white");
                         similarMovieContainer.append(similarRTRating);
 
                         var similarMoviePoster = document.createElement("img");
-                        similarMoviePoster.setAttribute("class", "card-image"); 
+                        similarMoviePoster.setAttribute("class", "card-image");
                         similarMoviePoster.setAttribute("src", data.Poster);
                         similarMovieContainer.append(similarMoviePoster);
 
@@ -122,12 +124,47 @@ var tasteDiveApi = function (movieData) {
         });
 };
 
-searchBtn.addEventListener("click", function (event) {
-    event.preventDefault();
-    var userMovie = document.getElementById("user-input").value;
+function getMovieFromStorage() {
+    return JSON.parse(localStorage.getItem("movies")) || [];
+};
 
-    var userStorage = userMovie;
-    localStorage.setItem("user-movie", JSON.stringify(userStorage));
+function addMovieToStorage() {
+    localStorage.setItem("movies", JSON.stringify(userMovies));
+};
+
+function generatePriorMovie() {
+    previousSearchEl.innerHTML = "";
+    userMovies = getMovieFromStorage();
+
+    for (var i = 0; i < userMovies.length; i++) {
+        var movieButton = document.createElement("button");
+        movieButton.setAttribute("class", "button is-primary is-focused mr-2");
+        movieButton.textContent = userMovies[i];
+        movieButton.setAttribute("data-movie", userMovies[i]);
+
+        movieButton.addEventListener("click", function (event) {
+
+            var movie = event.target.getAttribute("data-movie");
+            omdbApi(movie);
+
+            // why wont calling tasteDiveApi here work??? 
+
+        });
+        previousSearchEl.appendChild(movieButton);
+    }
+};
+
+
+searchBtn.addEventListener("click", function (event) {
+    
+    event.preventDefault();
+
+    var userMovie = document.getElementById("user-input").value;
+    userMovies.push(userMovie);
+
+    addMovieToStorage();
+    generatePriorMovie();
+
 
     if (userMovie === "") {
         document.getElementById("warning").textContent = "Please enter a movie!";
@@ -140,3 +177,5 @@ searchBtn.addEventListener("click", function (event) {
         omdbApi(userMovie);
     }
 });
+
+generatePriorMovie();
