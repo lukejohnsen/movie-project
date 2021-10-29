@@ -5,7 +5,7 @@ var similarMovieDetails = document.getElementById("similar-movie-details");
 
 var omdbApi = function (userMovie) {
     var omdbKey = "d9d0cc4d";
-    var omdbUrl = "http://www.omdbapi.com/?t=" + userMovie + "&apikey=" + omdbKey;
+    var omdbUrl = "https://www.omdbapi.com/?t=" + userMovie + "&apikey=" + omdbKey;
 
     fetch(omdbUrl)
         .then(function (response) {
@@ -75,7 +75,7 @@ var tasteDiveApi = function (movieData) {
             for (let i = 0; i < data.Similar.Results.length; i++) {
 
                 var omdbKey = "d9d0cc4d";
-                var similarMovieData = "http://www.omdbapi.com/?t=" + data.Similar.Results[i].Name + "&apikey=" + omdbKey;
+                var similarMovieData = "https://www.omdbapi.com/?t=" + data.Similar.Results[i].Name + "&apikey=" + omdbKey;
 
                 fetch(similarMovieData)
                     .then(function (response) {
